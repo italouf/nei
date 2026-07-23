@@ -855,26 +855,22 @@ footer {
             </div>
         </div -->
 
-        <!-- White Papers + Estudos Setoriais lado a lado -->
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem;">
-            <div style="flex: 1; min-width: 260px;">
-                <h3>White Papers</h3>
-                <div class="swiper swiper-white">
-                    <div class="swiper-wrapper" id="white-wrapper"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-            <div style="flex: 1; min-width: 260px;">
-                <h3>Estudos Setoriais</h3>
-                <div class="swiper swiper-setoriais">
-                    <div class="swiper-wrapper" id="setoriais-wrapper"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
+        <!-- White Papers -->
+        <h3>White Papers</h3>
+        <div class="swiper swiper-white">
+            <div class="swiper-wrapper" id="white-wrapper"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Estudos Setoriais -->
+        <h3>Estudos Setoriais</h3>
+        <div class="swiper swiper-setoriais">
+            <div class="swiper-wrapper" id="setoriais-wrapper"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
 
         <!-- Benchmarking -->
@@ -1128,11 +1124,10 @@ const whitePapers = [
 ];
 
 const setoriais = [
-    { nome: "Parque Tecnológico Aeroespacial da Bahia", arquivo: "docs/setoriais/02142025_Parque_Tecnologico_Aeroespacial.pdf", thumb: "img/tec.png" },
-    { nome: "Relatório Hub Aeroespacial", arquivo: "docs/setoriais/02142025_Relatorio_Hub_Aeroespacial_FINAL.pdf", thumb: "img/hub.png" },
-    { nome: "Economia Digital e Criativa", arquivo: "docs/setoriais/02142025_Relatorio_Tecnico_Economia_Digital_Criativa.pdf", thumb: "img/eco.png" },
-    { nome: "Implantação Curso Técnico Aeronaves", arquivo: "docs/setoriais/06302025_Relatorio_tecnico_Implantacao_curso.pdf", thumb: "img/imple.png" },
-    { nome: "Economia Digital - Versão ME", arquivo: "docs/setoriais/10302025_Relatorio_Tecnico_Economia_Digital_ME_V2.pdf", thumb: "img/dig.png" }
+    { nome: "Relatório Hub Aeroespacial", arquivo: "docs/setoriais/02142025_Relatorio_Hub_Aeroespacial_FINAL.pdf", thumb: "img/hub.png", noLink: true },
+    { nome: "Economia Digital e Criativa", arquivo: "docs/setoriais/02142025_Relatorio_Tecnico_Economia_Digital_Criativa.pdf", thumb: "img/eco.png", noLink: true },
+    { nome: "Implantação Curso Técnico Aeronaves", arquivo: "docs/setoriais/06302025_Relatorio_tecnico_Implantacao_curso.pdf", thumb: "img/imple.png", noLink: true },
+    { nome: "Economia Digital - Versão ME", arquivo: "docs/setoriais/10302025_Relatorio_Tecnico_Economia_Digital_ME_V2.pdf", thumb: "img/dig.png", noLink: true }
 ];
 
 const benchDocs = [
@@ -1175,7 +1170,7 @@ function preencherSwiper(wrapperId, itens) {
                     ${thumbHtml}
                 </div>
                 <h4>${item.nome}</h4>
-                <a href="${item.arquivo}" target="_blank">📄 Visualizar →</a>
+                ${item.noLink ? '' : `<a href="${item.arquivo}" target="_blank">📄 Visualizar →</a>`}
             </div>
         `;
         wrapper.appendChild(slide);
